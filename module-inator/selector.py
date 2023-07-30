@@ -18,3 +18,16 @@ MainDir(module-inator)
     file(selectory.py)
     "this file choose a str to load module in based on the query str"
 """
+import argparse
+
+# Static Imports with filepaths
+
+from modules.fordcraft_ship.fordcraft_api import FordCarft
+from modules.starship_ship.starship_api import StarShip
+from modules.tesla_ship.tesla_api import Tesla
+
+
+ford_craft_ = FordCarft("General Ken", "Asteroids", "3000ft", "339525")
+ford_craft_.authenticate()
+if ford_craft_.auth_status:
+    print("Oh yeah!, we are in baby.")

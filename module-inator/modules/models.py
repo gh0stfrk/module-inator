@@ -1,4 +1,8 @@
+"""
+Base model
+"""
 from abc import ABC, abstractmethod
+
 
 class BaseModule(ABC):
     """
@@ -22,7 +26,7 @@ class BaseModule(ABC):
         """
         Take aim on enemy space craft and lock sights on them.
         """
-    
+
     @abstractmethod
     def reboot_system(self, admin_id):
         """
