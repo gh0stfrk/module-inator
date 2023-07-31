@@ -49,23 +49,23 @@ if __name__ == "__main__":
             print("\t"+m)
         exit(0)
     
-    print(f"Args: {args.query}")
+    print(f"Requested Module: {args.query}\n")
     
     mod_info = dynamic_module_loader(args.query)
 
     if not mod_info:
-        print(f"sorry {args.query} is not an available module.")
+        print(f"[!] Sorry {args.query} is not an available module.")
         exit(2)
 
     path = mod_info["path"]
     name = mod_info["name"]
 
-    print(path+"."+name)
+    print("Class path : "+path+"."+name+"\n")
 
     the_module = __import__(path, fromlist=[name])
     klass = getattr(the_module, name)
 
-    print(klass)
+    print(f"{klass}\n")
 
     space_ship = klass(
         name="General Sal",
