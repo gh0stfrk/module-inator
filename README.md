@@ -1,4 +1,7 @@
-# module-inator
+<a href="https://imgflip.com/i/7u9wco"><img src="https://i.imgflip.com/7u9wco.jpg" title="made at imgflip.com"/></a>
+
+
+# module-inator 🕹️
 
 The module-inator, dynamically loading python classes.
 
