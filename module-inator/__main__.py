@@ -19,15 +19,18 @@ MainDir(module-inator)
     "this file choose a str to load module in based on the query str"
 """
 import argparse
-from loader import dynamic_module_loader
+from loader import dynamic_module_loader, list_modules   # pylint: disable=import-error
 
 # # Static Imports with filepaths
+
 # from modules.fordcraft_ship.fordcraft_api import FordCarft
 # from modules.starship_ship.starship_api import StarShip
 # from modules.tesla_ship.tesla_api import Tesla
 
-parser = argparse.ArgumentParser()
-parser.add_argument("query")
+parser = argparse.ArgumentParser(description="Dynamicaly import modules with module-inator.")
+parser.add_argument("-q", "--query", help="Name of the module you want to load.")
+parser.add_argument("-s", "--show-modules", action="store_true", help="List all available modules")
+
 args = parser.parse_args()
 
 # ford_craft_ = FordCarft("General Ken", "Asteroids", "3000ft", "339525")
@@ -37,6 +40,13 @@ args = parser.parse_args()
 
 if __name__ == "__main__":
 
+    if args.show_modules:
+        mod_list = list_modules()
+        print("The available modules are:")
+        for m in mod_list:
+            print("\t"+m)
+        exit(0)
+    
     print(f"Args: {args.query}")
     
     mod_info = dynamic_module_loader(args.query)
@@ -47,9 +57,12 @@ if __name__ == "__main__":
 
     path = mod_info["path"]
     name = mod_info["name"]
+
     print(path+"."+name)
+
     the_module = __import__(path, fromlist=[name])
     klass = getattr(the_module, name)
+
     print(klass)
 
     space_ship = klass(
@@ -60,3 +73,4 @@ if __name__ == "__main__":
     )
 
     space_ship.authenticate()
+    
