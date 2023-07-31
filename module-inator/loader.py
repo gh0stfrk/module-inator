@@ -7,7 +7,7 @@ modules_ = {
     "StarShip":"modules.starship_ship.starship_api",
 }
 
-def module_loader(query_str):
+def dynamic_module_loader(query_str):
     """
     Finds the path for the input query_str
 
