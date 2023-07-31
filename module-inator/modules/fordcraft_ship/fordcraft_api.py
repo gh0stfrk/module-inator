@@ -4,7 +4,7 @@ Fordcraft api controller
 from modules.models import BaseModule
 
 
-class FordCarft(BaseModule):
+class FordCraft(BaseModule):
     """
     Fordcraft ships api mapped to base module
     """

@@ -21,10 +21,10 @@ MainDir(module-inator)
 import argparse
 from loader import dynamic_module_loader
 
-# Static Imports with filepaths
-from modules.fordcraft_ship.fordcraft_api import FordCarft
-from modules.starship_ship.starship_api import StarShip
-from modules.tesla_ship.tesla_api import Tesla
+# # Static Imports with filepaths
+# from modules.fordcraft_ship.fordcraft_api import FordCarft
+# from modules.starship_ship.starship_api import StarShip
+# from modules.tesla_ship.tesla_api import Tesla
 
 parser = argparse.ArgumentParser()
 parser.add_argument("query")
@@ -51,4 +51,12 @@ if __name__ == "__main__":
     the_module = __import__(path, fromlist=[name])
     klass = getattr(the_module, name)
     print(klass)
-    
+
+    space_ship = klass(
+        name="General Sal",
+        space_type = "Galaxy",
+        size = "1900m",
+        code = 194567,
+    )
+
+    space_ship.authenticate()
