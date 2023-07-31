@@ -18,6 +18,7 @@ MainDir(module-inator)
     file(selectory.py)
     "this file choose a str to load module in based on the query str"
 """
+import sys
 import argparse
 from loader import dynamic_module_loader, list_modules   # pylint: disable=import-error
 
@@ -31,7 +32,7 @@ parser = argparse.ArgumentParser(description="Dynamicaly import modules with mod
 parser.add_argument("-q", "--query", help="Name of the module you want to load.")
 parser.add_argument("-s", "--show-modules", action="store_true", help="List all available modules")
 
-args = parser.parse_args()
+
 
 # ford_craft_ = FordCarft("General Ken", "Asteroids", "3000ft", "339525")
 # ford_craft_.authenticate()
@@ -39,6 +40,7 @@ args = parser.parse_args()
 #     print("Oh yeah!, we are in baby.")
 
 if __name__ == "__main__":
+    args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
 
     if args.show_modules:
         mod_list = list_modules()
